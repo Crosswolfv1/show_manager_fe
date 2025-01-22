@@ -1,0 +1,22 @@
+header {
+background-color: red;
+padding: 40px 20px 10px 30px;
+}
+
+.festival-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.festival-grid article {
+background-color: yellow;
+
+}
+
+.festival-grid img {
+  max-height: 300px;
+}
+
+footer {
+  background-color: green;
+}
