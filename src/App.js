@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Homepage from "./components/homepage/Homepage";
+import Festival from "./components/festival/Festival"
+import { Routes, Route} from 'react-router-dom';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
+      <Routes>
+        <Route path="/" element={<Homepage/>} />
+        <Route path="/festivals/:festivalId" element={<Festival/>} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
