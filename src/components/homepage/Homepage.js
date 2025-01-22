@@ -21,18 +21,22 @@ const Homepage = () => {
         {festivalArray?.data?.map((festival, index) => {
           return (
             <>
-            <section key={index}>
-              <h2>{festival.attributes.name}</h2>
-              <img src={festival.attributes.imageURL} alt={festival.attributes.name} />
-              <p>{festival.attributes.name}</p>
+            <article key={index}>
+              <Link to={`/festivals/${festival.id}`}>
+                <h2>{festival.attributes.name}</h2>
+                <img src={festival.attributes.imageURL} alt={festival.attributes.name} />
+              </Link>
               <ul>
-                <li>{festival.attributes.start_time}</li>
-                <li>{festival.attributes.end_time}</li>
+                <li>Start Date: {festival.attributes.start_time}</li>
+                <li>End Date: {festival.attributes.end_time}</li>
               </ul>
-            </section>
+            </article>
             </>
         )})}
       </section>
+      <footer>
+        <p> footer placeholders be like</p>
+      </footer>
     </main>
   );
 }
