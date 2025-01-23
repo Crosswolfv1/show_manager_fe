@@ -94,9 +94,6 @@ const Festival = () => {
             })
             }
       </section>
-      <footer>
-        <p> footer placeholders be like</p>
-      </footer>
     </main>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Homepage.css";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Homepage = () => {
   const [festivalArray, setFestivalArray] = useState([]);
@@ -14,9 +14,9 @@ const Homepage = () => {
   
   return (
     <main>
-      <header>  
-        <h1>Show Manager</h1>
-      </header>
+        <Link to='/'>
+          <h1>Show Manager</h1>
+        </Link>
       <section className="festival-grid">
         {festivalArray?.data?.map((festival, index) => {
           return (
@@ -34,9 +34,6 @@ const Homepage = () => {
             </>
         )})}
       </section>
-      <footer>
-        <p> footer placeholders be like</p>
-      </footer>
     </main>
   );
 }
