@@ -1,5 +1,6 @@
 # Show Manager (Frontend)
 *[Backend located here](https://github.com/Crosswolfv1/show_manager_be)*
+
 Show Manager is a web application designed to help users manage music festivals, artists/bands, and attendees. This repository contains the frontend of the application, built using React and JSX.
 
 ## Table of Contents
