@@ -1,20 +1,28 @@
 header {
-background-color: grey;
-padding: 40px 20px 10px 30px;
+  background-color: grey;
+  padding: 40px 20px 10px 30px;
 }
 
 .festival-grid {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .festival-grid article {
-background-color: white;
-
+ background-color: white;
+ border: 1px solid black; 
 }
 
 .festival-grid img {
-  max-height: 300px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.festival-grid article:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  cursor: pointer;
 }
 
 footer {
@@ -33,10 +41,16 @@ a, .link {
 }
 
 li {
-  font-size: large;
+  font-size: 15px;
+  list-style: none;
+  margin-left: -37px;
 }
 
 html {
   height: 100%;
   margin: 0
+}
+
+input {
+  
 }
