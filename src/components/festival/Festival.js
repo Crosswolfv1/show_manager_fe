@@ -61,38 +61,36 @@ const Festival = () => {
         </div>
       </section>
       <section>
-      <h2>Attending Bands</h2>
+      <h2>{"Attending Bands (click to remove from festival listing)"}</h2>
       </section>
       <section className="festival-artists-grid">
-          {attendeeInfo?.filter((entry) => {
-            if (entry.type === "artist") {
-              return entry
-            }}).map((artist) => {
-              return <>
-                <article key={artist.id} className="artist-card" onClick={() => removeArtist(artist.id)}>
-                  <h3>{artist.attributes.name}</h3>
-                  <img src={artist.attributes.imageURL ? artist.attributes.imageURL : 'https://i.imgur.com/5cQptOf.png'} className="band-image" alt={artist.attributes.name}></img>
-                </article>
-             </>
-            })
-            }
-      </section>
+        {attendeeInfo?.filter((entry) => entry.type === "artist").length > 0 ? (
+          attendeeInfo
+            ?.filter((entry) => entry.type === "artist")
+            .map((artist) => (
+              <article key={artist.id} className="artist-card" onClick={() => removeArtist(artist.id)}>
+                <h3>{artist.attributes.name}</h3>
+                <img 
+                  src={artist.attributes.imageURL || 'https://i.imgur.com/5cQptOf.png'} 
+                  className="band-image" 
+                  alt={artist.attributes.name}
+                />
+              </article>
+                ))) : (<p>No Artists found for this Festival</p>)}
+        </section>
       <section>
         <h2>Attending users</h2>
       </section>
       <section className="festival-users-grid">
-        {attendeeInfo?.filter((entry) => {
-            if (entry.type === "user") {
-              return entry
-            }}).map((user) => {
-              return <>
+        {attendeeInfo?.filter((entry) => entry.type === "user").length > 0 ? (
+          attendeeInfo
+            ?.filter((entry) => entry.type === "user")
+            .map((user) => (
               <article key={user.id} className="user-card">
                 <p>{`${user.attributes.first_name} ${user.attributes.last_name}`}</p>
-                <p>{`${user.attributes.email}`}</p>
+                <p>{user.attributes.email}</p>
               </article>
-             </>
-            })
-            }
+            ))) : (<p>No Users found for this Festival</p>)}
       </section>
     </main>
   );
