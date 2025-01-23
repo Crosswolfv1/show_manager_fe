@@ -50,7 +50,7 @@ The Show Manager frontend serves as the user interface for interacting with the 
    ```bash
    npm start
    ```
-5. Open your browser and go to `http://localhost:3000` to view the application.
+5. Open your browser and go to `http://localhost:3001` to view the application. ***START THE [BACKEND](https://github.com/Crosswolfv1/show_manager_be) FIRST***
 
 ## Usage
 - Navigate to the homepage to see an overview of available festivals.
