@@ -15,6 +15,8 @@ Show Manager is a web application designed to help users manage music festivals,
 ## Overview
 The Show Manager frontend serves as the user interface for interacting with the application's backend API. Admin can view festival schedules, manage their artists/bands in said festivals, and explore festival details.
 
+![Demo Gif](public/festivalgif.gif)
+
 ## Technologies Used
 - **React**: JavaScript library for building user interfaces
 - **React Router**: For handling client-side routing
