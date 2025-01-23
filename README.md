@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Show Manager (Frontend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Show Manager is a web application designed to help users manage music festivals, artists/bands, and attendees. This repository contains the frontend of the application, built using React and JSX.
 
-## Available Scripts
+## Table of Contents
+- [Overview](#overview)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
+- [Future Enhancements](#future-enhancements)
+- [Contact](#contact_details)
 
-In the project directory, you can run:
+## Overview
+The Show Manager frontend serves as the user interface for interacting with the application's backend API. Admin can view festival schedules, manage their artists/bands in said festivals, and explore festival details.
 
-### `npm start`
+## Technologies Used
+- **React**: JavaScript library for building user interfaces
+- **React Router**: For handling client-side routing
+- **CSS**: For styling components
+- **JavaScript (ES6)**: For application logic
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
+- **View All Festival Schedules**: Explore a list of all music festivals.
+- **Remove Shows**: Remove specific shows from a festival's schedule.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup and Installation
 
-### `npm test`
+### Prerequisites
+- Node.js (v16 or later recommended)
+- npm 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Crosswolfv1/show_manager_fe.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd show_manager_fe
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm start
+   ```
+5. Open your browser and go to `http://localhost:3000` to view the application.
 
-### `npm run build`
+## Usage
+- Navigate to the homepage to see an overview of available festivals.
+- Select a festival by clicking on it to view artists/bands and users attending.
+- Remove shows from the festival directly via the user interface.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Folder Structure
+```
+show_manager_fe/
+├── public/              # Public assets
+├── src/
+│   ├── components/      # Reusable React components
+│   │   ├── homepage/    # Homepage-specific components
+│   │   ├── festival/    # Festival-related components
+│   ├── App.js           # Main application component
+│   ├── index.js         # Entry point for the React app
+├── package.json         # Project metadata and dependencies
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Future Enhancements
+- Add user managment, creation, deletion modification.
+- Better CSS, make more responsive follow ARIA guidelines for accessability
+- Calendar intergrations instead of just statime time and dates
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact Details
+- [Github](https://github.com/Crosswolfv1) Crosswolfv1
+- [LinkedIn](https://www.linkedin.com/in/jeremiahross/) /in/jeremiahross
