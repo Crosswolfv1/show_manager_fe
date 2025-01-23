@@ -27,8 +27,13 @@ h2 {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-evenly;
-  background-color: yellow;
+  background-color: grey;
 }
+
+.artist-card {
+  border: 1px solid black; 
+}
+
 
 .artist-card:hover {
   transform: translateY(-10px); 
@@ -46,11 +51,15 @@ h2 {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-evenly;
-  background-color: pink;
+  background-color: grey;
 }
 
 .user-card:hover {
   transform: translateY(-10px); 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
   cursor: pointer;
+}
+
+.user-card {
+  border: 1px solid black; 
 }
