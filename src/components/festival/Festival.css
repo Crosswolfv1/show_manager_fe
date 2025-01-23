@@ -1,0 +1,56 @@
+.festival-overview {
+  display: flex;
+  justify-content: center; 
+  padding: 20px;
+}
+
+.festival-image {
+  max-width: 200px; 
+  height: auto; 
+  margin-right: 20px; 
+}
+
+
+.text-container {
+  display: flex; 
+  flex-direction: column; 
+}
+
+h2 {
+  font-size: 24px; 
+  margin: 0; 
+  text-align: center;
+}
+
+.festival-artists-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-evenly;
+  background-color: yellow;
+}
+
+.artist-card:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  cursor: pointer;
+}
+
+.band-image {
+  width: auto; 
+  max-height: 100px;
+}
+
+.festival-users-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-evenly;
+  background-color: pink;
+}
+
+.user-card:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  cursor: pointer;
+}
