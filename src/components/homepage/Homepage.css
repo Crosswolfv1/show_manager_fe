@@ -1,5 +1,5 @@
 header {
-background-color: red;
+background-color: grey;
 padding: 40px 20px 10px 30px;
 }
 
@@ -9,7 +9,7 @@ padding: 40px 20px 10px 30px;
 }
 
 .festival-grid article {
-background-color: yellow;
+background-color: white;
 
 }
 
@@ -18,9 +18,25 @@ background-color: yellow;
 }
 
 footer {
-  background-color: green;
+  background-color: grey;
 }
 
 main {
   background-color: grey;
+  width: 197%;
+  height: 96vh;
+}
+
+a, .link {
+  text-decoration: none; 
+  color: inherit;        
+}
+
+li {
+  font-size: large;
+}
+
+html {
+  height: 100%;
+  margin: 0
 }
