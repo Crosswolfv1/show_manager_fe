@@ -3,55 +3,95 @@ import "./Festival.css"
 import { Link, useParams } from 'react-router-dom'
 
 const Festival = () => {
-  const {festivalId} = useParams();
+  const { festivalId } = useParams();
   const [festivalData, setFestivalData] = useState(null);
-  const [festInfo, setfestInfo] = useState(null)
-  const [attendeeInfo, setAttendeeInfo] = useState(null)
-
+  const [festInfo, setFestInfo] = useState(null)
+  const [attendeeArtists, setAttendeeArtists] = useState([])
+  const [attendeeUsers, setAttendeeUsers] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/v1/festivals/${festivalId}`)
-      .then(response => response.json())
-      .then(data => {
-        setFestivalData(data)
-      })
-      .catch(error => console.log(error))
-  }, [festivalId])
+      .then((response) => response.json())
+      .then((data) => {
+        const fest = data?.data
+        const attend = data?.included
 
-  useEffect(() => {
-    if (festivalData) {
-      const fest = festivalData?.data; 
-      const attend = festivalData?.included;  
-      
-      setfestInfo(fest); 
-      setAttendeeInfo(attend); 
-    }
-  }, [festivalData]); 
+        // Format festival start and end time (month, day, year)
+        const formattedFest = { ...fest }
+        const festivalStart = new Date(fest.attributes.start_time)
+        const festivalEnd = new Date(fest.attributes.end_time)
+
+        formattedFest.attributes.start_time = festivalStart.toLocaleDateString('en-US', {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric',
+        })
+
+        formattedFest.attributes.end_time = festivalEnd.toLocaleDateString('en-US', {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric',
+        })
+
+        // Separate artist data and user data
+        const formattedArtists = fest.attributes.attending_artists_with_times.map((artistTime) => {
+          const artist = attend.find(a => a.attributes.name === artistTime.artist_name)
+          if (artist) {
+            const artistStart = new Date(artistTime.start_time)
+            const artistEnd = new Date(artistTime.end_time)
+
+            artist.attributes.start_time = artistStart.toLocaleString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            })
+
+            artist.attributes.end_time = artistEnd.toLocaleString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            })
+
+            return artist
+          }
+          return null
+        }).filter(artist => artist !== null)
+
+        const formattedUsers = attend.filter((entry) => entry.type === "user")
+
+        setFestInfo(formattedFest)
+        setAttendeeArtists(formattedArtists)
+        setAttendeeUsers(formattedUsers)
+      })
+      .catch((error) => console.log(error))
+  }, [festivalId])
 
   const removeArtist = (artistId) => {
     fetch(`http://localhost:3000/api/v1/festivals/${festivalId}/artist/${artistId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     })
-    .then(data => {
-      const filteredData = attendeeInfo.filter((attendee) => {
-        if (attendee.type !== "artist" || (attendee.type === "artist" && attendee.id !== artistId)) {
-          return attendee
-    }})
-    console.log(filteredData)
-    setAttendeeInfo(filteredData)
-    })
-    .catch(error => console.log(error))
+      .then(() => {
+        const filteredData = attendeeArtists.filter((attendee) => attendee.id !== artistId)
+        setAttendeeArtists(filteredData)
+      })
+      .catch((error) => console.log(error))
   }
-  
+
   return (
     <main>
-      <header>  
+      <header>
         <Link to='/'>
           <h1>Show Manager</h1>
         </Link>
       </header>
       <section className="festival-overview">
-        <img src={festInfo?.attributes.imageURL} className="festival-image" alt={festInfo?.attributes.name}></img>
+        <img src={festInfo?.attributes.imageURL} className="festival-image" alt={festInfo?.attributes.name} />
         <div className="text-content">
           <h2>{festInfo?.attributes.name}</h2>
           <ul>
@@ -61,38 +101,51 @@ const Festival = () => {
         </div>
       </section>
       <section>
-      <h2>{"Attending Bands (click to remove from festival listing)"}</h2>
+        <h2>{"Attending Bands (click to remove from festival listing)"}</h2>
       </section>
       <section className="festival-artists-grid">
-        {attendeeInfo?.filter((entry) => entry.type === "artist").length > 0 ? (
-          attendeeInfo
-            ?.filter((entry) => entry.type === "artist")
-            .map((artist) => (
-              <article key={artist.id} className="artist-card" onClick={() => removeArtist(artist.id)}>
-                <h3>{artist.attributes.name}</h3>
-                <img 
-                  src={artist.attributes.imageURL || 'https://i.imgur.com/5cQptOf.png'} 
-                  className="band-image" 
-                  alt={artist.attributes.name}
-                />
-              </article>
-                ))) : (<p>No Artists found for this Festival</p>)}
-        </section>
+        {attendeeArtists?.length > 0 ? (
+          attendeeArtists.map((artist) => (
+            <article key={artist.id} className="artist-card" onDoubleClick={() => removeArtist(artist.id)}>
+              <h3>{artist.attributes.name}</h3>
+              <ul>
+                {artist.attributes.start_time && artist.attributes.end_time ? (
+                  <>
+                    <li>Start Time: {artist.attributes.start_time}</li>
+                    <li>End Time: {artist.attributes.end_time}</li>
+                  </>
+                ) : (
+                  <p>Times not available</p>
+                )}
+              </ul>
+              <img 
+                src={artist.attributes.imageURL || 'https://i.imgur.com/5cQptOf.png'} 
+                className="band-image" 
+                alt={artist.attributes.name}
+              />
+            </article>
+          ))
+        ) : (
+          <p>No Artists found for this Festival</p>
+        )}
+      </section>
       <section>
-        <h2>Attending users</h2>
+        <h2>Attending Users</h2>
       </section>
       <section className="festival-users-grid">
-        {attendeeInfo?.filter((entry) => entry.type === "user").length > 0 ? (
-          attendeeInfo
-            ?.filter((entry) => entry.type === "user")
-            .map((user) => (
-              <article key={user.id} className="user-card">
-                <p>{`${user.attributes.first_name} ${user.attributes.last_name}`}</p>
-                <p>{user.attributes.email}</p>
-              </article>
-            ))) : (<p>No Users found for this Festival</p>)}
+        {attendeeUsers?.length > 0 ? (
+          attendeeUsers.map((user) => (
+            <article key={user.id} className="user-card">
+              <p>{`${user.attributes.first_name} ${user.attributes.last_name}`}</p>
+              <p>{user.attributes.email}</p>
+            </article>
+          ))
+        ) : (
+          <p>No Users found for this Festival</p>
+        )}
       </section>
     </main>
   );
 }
+
 export default Festival;

@@ -6,7 +6,7 @@ import { Routes, Route} from 'react-router-dom';
 const App = () => {
 
   return (
-    <div style={{ maxWidth: "100vh"}}>
+    <div>
       <Routes>
         <Route path="/" element={<Homepage/>} />
         <Route path="/festivals/:festivalId" element={<Festival/>} />

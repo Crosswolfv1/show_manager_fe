@@ -1,20 +1,32 @@
 header {
-  background-color: grey;
-  padding: 40px 20px 10px 30px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 20px;
+}
+
+.search-bar {
+  padding: 5px;
+  width: 200px; 
 }
 
 .festival-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
+  gap: 5px; 
+  justify-content: space-evenly; 
 }
 
 .festival-grid article {
- background-color: white;
- border: 1px solid black; 
+  background-color: white;
+  border: 1px solid black; 
+  flex: 1 1 calc(33.333% - 20px); 
+  max-width: calc(33.333% - 20px); 
+  margin-bottom: 15px; 
 }
 
 .festival-grid img {
-  width: 250px;
+  width: 100%; 
   height: 250px;
   object-fit: cover;
 }
@@ -23,16 +35,6 @@ header {
   transform: translateY(-10px); 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
   cursor: pointer;
-}
-
-footer {
-  background-color: grey;
-}
-
-main {
-  background-color: grey;
-  width: 197%;
-  height: 96vh;
 }
 
 a, .link {
@@ -44,13 +46,4 @@ li {
   font-size: 15px;
   list-style: none;
   margin-left: -37px;
-}
-
-html {
-  height: 100%;
-  margin: 0
-}
-
-input {
-  
 }
