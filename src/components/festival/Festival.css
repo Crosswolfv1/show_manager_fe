@@ -1,19 +1,25 @@
 .festival-overview {
   display: flex;
-  justify-content: center; 
+  justify-content: space-evenly; 
   padding: 20px;
 }
 
 .festival-image {
-  max-width: 200px; 
+  max-width: 50vh; 
   height: auto; 
   margin-right: 20px; 
 }
 
+div.text-content {
+  width: 66%;
+}
 
-.text-container {
-  display: flex; 
-  flex-direction: column; 
+div.text-content h2 {
+  font-size: 80px;
+}
+
+div.text-content li {
+  position: relative;
 }
 
 h2 {
@@ -30,20 +36,26 @@ h2 {
   background-color: grey;
 }
 
-.artist-card {
-  border: 1px solid black; 
+.festival-artists-grid > .artist-card {
+  flex-basis: calc(25% - 20px); 
+  max-width: calc(25% - 20px);   
 }
 
+.artist-card {
+  border: 1px solid black; 
+  background-color: white;
+}
+
+.band-image {
+  width: auto;
+  max-height: 100px;
+  max-width: 100%;
+}
 
 .artist-card:hover {
   transform: translateY(-10px); 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
   cursor: pointer;
-}
-
-.band-image {
-  width: auto; 
-  max-height: 100px;
 }
 
 .festival-users-grid {
@@ -54,12 +66,22 @@ h2 {
   background-color: grey;
 }
 
+.festival-users-grid > .user-card {
+  flex-basis: calc(16.66% - 20px);
+  max-width: calc(16.66% - 20px);
+}
+
+.user-card {
+  border: 1px solid black; 
+  background-color: white;
+}
+
 .user-card:hover {
   transform: translateY(-10px); 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
   cursor: pointer;
 }
 
-.user-card {
-  border: 1px solid black; 
+section {
+  padding-top: 15px;
 }
