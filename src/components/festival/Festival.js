@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import "./Festival.css"
 import { Link, useParams } from 'react-router-dom'
+import homeImage from '../../assets/wordart.png'
 
 const Festival = () => {
   const { festivalId } = useParams();
@@ -87,13 +88,14 @@ const Festival = () => {
     <main>
       <header>
         <Link to='/'>
-          <h1>Show Manager</h1>
+          <img src={homeImage} alt="home button" />
         </Link>
       </header>
       <section className="festival-overview">
         <img src={festInfo?.attributes.imageURL} className="festival-image" alt={festInfo?.attributes.name} />
         <div className="text-content">
           <h2>{festInfo?.attributes.name}</h2>
+          {/* Dates here are a placeholder for a calender widget */}
           <ul>
             <li>{festInfo?.attributes.start_time}</li>
             <li>{festInfo?.attributes.end_time}</li>
@@ -101,29 +103,29 @@ const Festival = () => {
         </div>
       </section>
       <section>
-        <h2>{"Attending Bands (click to remove from festival listing)"}</h2>
+        <h2>{"Attending Bands (double click to remove from festival listing)"}</h2>
       </section>
       <section className="festival-artists-grid">
         {attendeeArtists?.length > 0 ? (
           attendeeArtists.map((artist) => (
-            <article key={artist.id} className="artist-card" onDoubleClick={() => removeArtist(artist.id)}>
-              <h3>{artist.attributes.name}</h3>
-              <ul>
-                {artist.attributes.start_time && artist.attributes.end_time ? (
-                  <>
-                    <li>Start Time: {artist.attributes.start_time}</li>
-                    <li>End Time: {artist.attributes.end_time}</li>
-                  </>
-                ) : (
-                  <p>Times not available</p>
-                )}
-              </ul>
-              <img 
-                src={artist.attributes.imageURL || 'https://i.imgur.com/5cQptOf.png'} 
-                className="band-image" 
-                alt={artist.attributes.name}
-              />
-            </article>
+            <>
+              <article key={artist.id} className="artist-card" onDoubleClick={() => removeArtist(artist.id)}>
+                <img src={artist.attributes.imageURL || 'https://i.imgur.com/5cQptOf.png'} className="band-image" alt={artist.attributes.name}/>
+                <div className="artist-content">
+                  <h3>{artist.attributes.name}</h3>
+                  <ul>
+                    {artist.attributes.start_time && artist.attributes.end_time ? (
+                      <>
+                        <li>Start Time: {artist.attributes.start_time}</li>
+                        <li>End Time: {artist.attributes.end_time}</li>
+                      </>
+                    ) : (
+                      <p>Times not available</p>
+                    )}
+                  </ul>
+                </div>
+              </article>
+            </>
           ))
         ) : (
           <p>No Artists found for this Festival</p>
@@ -144,6 +146,25 @@ const Festival = () => {
           <p>No Users found for this Festival</p>
         )}
       </section>
+      <footer className="footer">
+        <p>Connect with me:</p>
+        <div className="footer-links">
+          <a
+            href="https://github.com/Crosswolfv1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jeremiahross/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </footer>
     </main>
   );
 }

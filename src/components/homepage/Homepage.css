@@ -3,6 +3,11 @@ header {
   justify-content: space-between; 
   align-items: center; 
   padding: 20px;
+  background-color: #333;
+}
+
+header img {
+  max-width: 50vh;
 }
 
 .search-bar {
@@ -46,4 +51,28 @@ li {
   font-size: 15px;
   list-style: none;
   margin-left: -37px;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 40px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #00aced;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  color: #0099cc;
 }

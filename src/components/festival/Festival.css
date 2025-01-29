@@ -11,7 +11,16 @@
 }
 
 div.text-content {
-  width: 66%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+div.artist-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 div.text-content h2 {
@@ -47,9 +56,8 @@ h2 {
 }
 
 .band-image {
-  width: auto;
-  max-height: 100px;
-  max-width: 100%;
+  width: 49vh;
+
 }
 
 .artist-card:hover {
@@ -84,4 +92,28 @@ h2 {
 
 section {
   padding-top: 15px;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 40px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #00aced;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  color: #0099cc;
 }
